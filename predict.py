@@ -4,16 +4,21 @@
 from cog import BasePredictor, Input, Path
 from bark import SAMPLE_RATE, generate_audio, preload_models
 import soundfile as sf
+import os
+# run export XDG_CACHE_HOME=$PWD/.model_cache
+# to cache models in current directory
+os.environ['XDG_CACHE_HOME'] = '/src/.model_cache'
+print("setting cache to: ", os.environ['XDG_CACHE_HOME'])
+
 
 class Predictor(BasePredictor):
     def setup(self):
-        """Load the model into memory to make running multiple predictions efficient"""
-        # self.model = torch.load("./weights.pth")
+        """Load the model into memory to make running multiple predictions efficient"""    
         preload_models()
 
     def predict(
         self,
-        text_prompt: str = Input(description="Text prompt"),
+        text_prompt: str = Input(description="Text prompt", default="Hellow\nWorld!"),
         # scale: float = Input(
         #     description="Factor to scale image by", ge=0, le=10, default=1.5
         # ),
