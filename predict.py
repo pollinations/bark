@@ -3,7 +3,7 @@
 
 from cog import BasePredictor, Input, Path
 from bark import SAMPLE_RATE, generate_audio, preload_models
-import librosa
+import soundfile as sf
 
 class Predictor(BasePredictor):
     def setup(self):
@@ -24,7 +24,7 @@ class Predictor(BasePredictor):
         audio_array = generate_audio(text_prompt) 
 
         # export as wav
-        librosa.output.write_wav("/tmp/bark_output.wav", audio_array, SAMPLE_RATE)
+        sf.write('/tmp/bark_output.wav', audio_array, SAMPLE_RATE)
 
         # return path to wav file
         return Path("/tmp/bark_output.wav")
