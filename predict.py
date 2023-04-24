@@ -8,7 +8,6 @@ import os
 # run export XDG_CACHE_HOME=$PWD/.model_cache
 # to cache models in current directory
 os.environ['XDG_CACHE_HOME'] = '/src/.model_cache'
-print("setting cache to: ", os.environ['XDG_CACHE_HOME'])
 
 
 class Predictor(BasePredictor):
