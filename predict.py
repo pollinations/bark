@@ -13,7 +13,7 @@ class Predictor(BasePredictor):
 
     def predict(
         self,
-        text_prompt: str = Input(description="Hello, my name is Suno. And, uh — and I like pizza. [laughs]\nBut I also have other interests such as playing tic tac toe."),
+        text_prompt: str = Input(description="Text prompt", default="Hello, my name is Suno. And, uh — and I like pizza. [laughs]\nBut I also have other interests such as playing tic tac toe."),
         # scale: float = Input(
         #     description="Factor to scale image by", ge=0, le=10, default=1.5
         # ),
